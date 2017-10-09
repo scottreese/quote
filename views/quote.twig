@@ -1,12 +1,10 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <div class="container">
-    <h1>{{title}}</h1>
-    <div class="quote">{{quote_text}}</div>
-    {% if quote_author is not empty %}
-      <div class="author">- {{quote_author}}</div>
-    {% endif %}
-    <div class="links"><a href="/quote">See Another Quote &raquo;</a></div>
-  </div>
+  <h1>{{title}}</h1>
+  <div class="quote">{{quote_text}}</div>
+  {% if quote_author is not empty %}
+    <div class="author">- {{quote_author}}</div>
+  {% endif %}
+  <div class="links"><a href="/quote">See Another Quote &raquo;</a></div>
 {% endblock %}
