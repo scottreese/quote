@@ -3,7 +3,8 @@ var router = express.Router();
 var request = require('request');
 var quote_obj;
 var quote_text = '';
-var quote_author = 'Unattributed';
+var quote_author = '';
+var title = 'Quote';
 
 /* GET a quote. */
 router.get('/', function(req, res, next) {
@@ -23,26 +24,28 @@ router.get('/', function(req, res, next) {
       // Parse quote and break it up into its parts.
       try {
         quote_obj = JSON.parse(body);
+        quote_text = quote_obj.quoteText;
+
+        if (quote_obj.quoteAuthor) {
+          quote_author = quote_obj.quoteAuthor;
+        }
+        else {
+          quote_author = 'Unattributed';
+        }
       }
       catch(e) {
-        res.render('quote', {quote_text: 'Invalid JSON response received.', quote_author: quote_author, title: 'Error'})
-      }
-
-      quote_text = quote_obj.quoteText;
-
-      if (quote_obj.quoteAuthor) {
-        quote_author = quote_obj.quoteAuthor;
-      }
-      else {
-        quote_author = 'Unattributed';
+        quote_text = 'Unable to display this quote. Invalid JSON response received. Please click the link below to load another one.';
+        quote_author = '';
+        title = 'Oops! There Was A Problem';
       }
     }
     else {
       quote_text = 'There was a problem retrieving a quote.'
       quote_author = 'Code: ' + response.statusCode + '; Error: ' + error;
+      title = 'Oops! There Was A Problem';
     }
 
-    res.render('quote', { quote_text: quote_text, quote_author: quote_author, title: 'Quote' });
+    res.render('quote', { quote_text: quote_text, quote_author: quote_author, title: title });
   });
 });
 
