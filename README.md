@@ -17,6 +17,7 @@ This app assumes you already have Node.js installed on your local machine. If yo
 The following tools were used in the creation of this app:
 
 * Homebrew - https://brew.sh/
+* Node.js - https://nodejs.org/en/
 * NVM - https://github.com/creationix/nvm/blob/master/README.md
 * Express - https://expressjs.com/
 * Express Application Generator - https://expressjs.com/en/starter/generator.html
