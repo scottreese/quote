@@ -4,7 +4,7 @@ var request = require('request');
 var quote_obj;
 var quote_text = '';
 var quote_author = '';
-var title = 'Quote';
+var title = '';
 
 /* GET a quote. */
 router.get('/', function(req, res, next) {
@@ -32,6 +32,8 @@ router.get('/', function(req, res, next) {
         else {
           quote_author = 'Unattributed';
         }
+
+        title = 'Quote';
       }
       catch(e) {
         quote_text = 'Unable to display this quote. Invalid JSON response received. Please click the link below to load another one.';

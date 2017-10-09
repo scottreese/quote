@@ -8,7 +8,6 @@ var sassMiddleware = require('node-sass-middleware');
 
 var index = require('./routes/index');
 var quote = require('./routes/quote');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -32,7 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/quote', quote);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
